@@ -3,8 +3,18 @@
 -create react app
 -configure tailwind
 -Header
+-Routing of App
 -Login form
 -SignUp form
+-Form Validators
+-UseRef hook
+-firebase setup
+-deploy
+-Create Signup user account
+-implement signin in user api
+-created store with slice
+-implement sign out
+-update profile
 
 # Features
 
