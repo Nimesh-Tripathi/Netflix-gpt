@@ -1,12 +1,18 @@
 import React from 'react'
 import {  useSelector } from 'react-redux';
 import useTrailer from '../hooks/useTrailer';
+import useTrending from '../hooks/useTrending';
+import useTopRated from '../hooks/useTopRated';
+import useUpcoming from "../hooks/useUpcoming";
 
 const VideoBackground = ({ id }) => {
   // const [traileId,setTrailerId] = useState(null);
   const Trailer = useSelector(store => store.movies.trailerVideo)
 
   useTrailer()
+  useTrending();
+  useTopRated();
+  useUpcoming();
 
   return (
     <div className='w-full'>

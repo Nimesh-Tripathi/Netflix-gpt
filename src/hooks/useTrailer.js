@@ -11,7 +11,9 @@ const useTrailer = () => {
 
         const JSON = await data.json();
 
-        console.log(JSON.results[0]);
+        
+
+        // console.log(JSON.results[0]);
         // setTrailerId(JSON.results[0])
         dispatch(addTrailerVideo(JSON.results[0]))
     }
