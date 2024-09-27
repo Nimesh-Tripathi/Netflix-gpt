@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { signOut } from "firebase/auth";
 import { auth } from '../utils/Firebase'
 import { useNavigate } from "react-router-dom"
@@ -7,18 +7,27 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from 'react-redux'
 import { addUser, removeUser } from '../utils/userSlice'
 import { useEffect } from 'react'
-import { logo , avatar } from '../utils/constants';
+import { logo, avatar } from '../utils/constants';
+import { setGpt } from '../utils/gptSlice';
 
 const Header = () => {
     const navigate = useNavigate()
     const user = useSelector(store => store.user)
     const dispatch = useDispatch()
+    const [GptSearch, setGptSearch] = useState(false)
+
+    const ToggleGpt = () => {
+        setGptSearch(!GptSearch)
+    }
+
+    // console.log(GptSearch);
+    dispatch(setGpt(GptSearch))
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                const {uid , email , displayName} = user;
-                dispatch(addUser({uid : uid , email : email, displayName: displayName}))
+                const { uid, email, displayName } = user;
+                dispatch(addUser({ uid: uid, email: email, displayName: displayName }))
                 navigate("/browse")
             } else {
                 dispatch(removeUser())
@@ -48,6 +57,13 @@ const Header = () => {
             ></img>
 
             {user && (<div className='flex p-2 gap-8 items-center'>
+
+                <button
+                    className='py-3 px-4 mx-4 my-2 bg-purple-700 text-white rounded-lg'
+                    onClick={ToggleGpt}
+                > {GptSearch? "HomePage" : "GPT Search"}
+                </button>
+
                 <img
                     className='w-12 h-12'
                     src={avatar}

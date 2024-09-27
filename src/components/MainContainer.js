@@ -8,7 +8,7 @@ const MainContainer = () => {
     const movies = useSelector(state => state.movies?.nowPlayingMovies)
     if(!movies) return
 
-    const MainMovie = movies[17];
+    const MainMovie = movies[0];
     // console.log(MainMovie);
 
     const { title , overview} = MainMovie

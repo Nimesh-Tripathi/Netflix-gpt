@@ -9,7 +9,7 @@ const VideoBackground = ({ id }) => {
   // const [traileId,setTrailerId] = useState(null);
   const Trailer = useSelector(store => store.movies.trailerVideo)
 
-  useTrailer()
+  useTrailer({id})
   useTrending();
   useTopRated();
   useUpcoming();
@@ -18,7 +18,7 @@ const VideoBackground = ({ id }) => {
     <div className='w-full'>
       <iframe 
         className=' w-full aspect-video'
-        src=  {"https://www.youtube.com/embed/da7lKeeS67c?si=AO4B8EjXi0JsUSfV" + Trailer?.key + "?&autoplay=1&mute=1" }
+        src=  {"https://www.youtube.com/embed/4CLE3pWAAr8?si=BLuWp7SlPtU1mBi1" + Trailer?.key + "?&autoplay=1&mute=1" }
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"
       >
